@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'cloudinary_storage',
+    'cloudinary',
     'apps.categoria',
     'apps.cita',
     'apps.horario',
@@ -137,10 +139,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# Configuración de archivos estáticos y medios
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Configuración de Cloudinary
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Configuración de Cloudinary (reemplaza con tus credenciales)
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'juan',
+    'API_KEY': '996325563946377',
+    'API_SECRET': 'dD-GjonJ0_aLs3Vsf6IspPNK-h8'
+}
 
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
