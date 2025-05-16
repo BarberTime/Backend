@@ -1,0 +1,17 @@
+[build]
+command = "python manage.py collectstatic --noinput"
+
+[deploy]
+command = "gunicorn config.wsgi:application"
+
+[env]
+RAILWAY_STATIC_URL = "/static/"
+RAILWAY_MEDIA_URL = "/media/"
+RAILWAY_STATIC_ROOT = "/app/staticfiles"
+RAILWAY_MEDIA_ROOT = "/app/media"
+
+[static]
+path = "/static/"
+
+[media]
+path = "/media/"
