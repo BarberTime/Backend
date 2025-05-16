@@ -1,4 +1,4 @@
-Django
+Django>=4.2,<5
 djangorestframework
 psycopg2-binary
 gunicorn
@@ -6,5 +6,5 @@ uvicorn
 whitenoise
 pillow
 cloudinary
-git+https://github.com/klis87/django-cloudinary-storage.git
 django-storages
+
