@@ -1,10 +1,10 @@
 Django
 djangorestframework
 psycopg2-binary
-gunicorn 
+gunicorn
 uvicorn
-whitenoise 
+whitenoise
 pillow
 cloudinary
-cloudinary_storage
+git+https://github.com/klis87/django-cloudinary-storage.git
 django-storages
