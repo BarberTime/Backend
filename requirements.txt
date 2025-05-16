@@ -7,4 +7,4 @@ whitenoise
 pillow
 cloudinary
 cloudinary_storage
-    
+django-storages
