@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'storages',
     'apps.categoria',
     'apps.cita',
     'apps.horario',
@@ -92,6 +91,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+import os
 
 DATABASES = {
     'default': {
@@ -161,11 +162,13 @@ if not DEBUG:
     
     # Configuración de archivos media
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    
+    # Configuración de archivos media para Railway
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_ROOT = '/app/media'  # Ruta en Railway
     
     # Configuración de WhiteNoise para archivos media
-    WHITENOISE_ROOT = os.path.join(BASE_DIR, 'media')
+    WHITENOISE_ROOT = '/app/media'
     WHITENOISE_STATIC_PREFIX = '/media/'
 
 if not DEBUG:

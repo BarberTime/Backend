@@ -2,8 +2,14 @@ from django.db import models
 import uuid
 from apps.negocio.models import Negocio
 from apps.categoria.models import Categoria
+from django.core.files.storage import FileSystemStorage
 from apps.core.utils import get_upload_path
+
+# Configuración del almacenamiento de archivos
+fs = FileSystemStorage(location='media/')
+
 # Create your models here.
+
 class Servicio(models.Model):
     id_servicio = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     negocio = models.ForeignKey(Negocio, on_delete=models.CASCADE)
@@ -16,7 +22,6 @@ class Servicio(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
 
-    
     class Meta:
         db_table = 'servicio'
 
@@ -26,7 +31,7 @@ class Servicio(models.Model):
 class ImagenServicio(models.Model):
     id_imagen = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, related_name='imagenes')
-    imagen = models.ImageField(upload_to=get_upload_path)
+    imagen = models.FileField(storage=fs, upload_to=get_upload_path)
     descripcion = models.CharField(max_length=255, blank=True, null=True)
     es_principal = models.BooleanField(default=False)
     orden = models.IntegerField()
