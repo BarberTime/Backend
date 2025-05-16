@@ -5,3 +5,5 @@ gunicorn
 uvicorn
 whitenoise 
 pillow
+cloudinary
+cloudinary_storage
