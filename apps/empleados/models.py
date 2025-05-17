@@ -1,11 +1,7 @@
 import uuid
 from django.db import models
 from apps.negocio.models import Negocio
-from apps.core.utils import get_upload_path
-from django.core.files.storage import FileSystemStorage
-
-# Configuración del almacenamiento de archivos
-fs = FileSystemStorage(location='media/')
+from cloudinary.models import CloudinaryField
 
 class Empleado(models.Model):
     id_empleado = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -14,7 +10,7 @@ class Empleado(models.Model):
     apellidos = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, null=True, blank=True)
     telefono = models.CharField(max_length=20, null=True, blank=True)
-    foto = models.FileField(storage=fs, upload_to=get_upload_path, null=True, blank=True)
+    foto = CloudinaryField('foto', folder='empleados', null=True, blank=True)
     biografia = models.TextField(null=True, blank=True)
     especialidad = models.CharField(max_length=100, null=True, blank=True)
     fecha_contratacion = models.DateField()
