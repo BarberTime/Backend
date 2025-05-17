@@ -27,6 +27,16 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['web-production-94b30.up.railway.app']
 
+# Configuración de almacenamiento de archivos
+DEFAULT_FILE_STORAGE = 'storages.backends.minio.MinioStorage'
+MINIO_STORAGE_ENDPOINT = 'play.min.io'
+MINIO_STORAGE_ACCESS_KEY = 'Q3AM3UQ867SPQQA43P2F'
+MINIO_STORAGE_SECRET_KEY = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
+MINIO_STORAGE_USE_HTTPS = True
+MINIO_STORAGE_MEDIA_BUCKET_NAME = 'barbertime-media'
+MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+MINIO_STORAGE_MEDIA_URL = 'https://play.min.io/barbertime-media'
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Tu frontend local
     "https://web-production-94b30.up.railway.app/",  # Agrega este si usas Railway con dominio propio
@@ -44,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'rest_framework',
     'apps.categoria',
     'apps.cita',
@@ -149,14 +160,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 # Configuración de archivos estáticos y medios
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Configuración de MinIO
+MINIO_STORAGE_ENDPOINT = 'play.min.io'
+MINIO_STORAGE_ACCESS_KEY = 'Q3AM3UQ867SPQQA43P2F'
+MINIO_STORAGE_SECRET_KEY = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
+MINIO_STORAGE_USE_HTTPS = True
+MINIO_STORAGE_MEDIA_BUCKET_NAME = 'barbertime-media'
+MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+MINIO_STORAGE_MEDIA_URL = 'https://play.min.io/barbertime-media'
 
 # Configuración para producción
 if not DEBUG:
@@ -166,11 +182,15 @@ if not DEBUG:
         os.path.join(BASE_DIR, 'static')
     ]
     
+    # Configuración de almacenamiento de archivos
+    DEFAULT_FILE_STORAGE = 'storages.backends.minio.MinioStorage'
+    STATICFILES_STORAGE = 'storages.backends.minio.MinioStaticStorage'
+    
     # Configuración de WhiteNoise para archivos estáticos
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     
     # Configuración de archivos media
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    # DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
     
     # Configuración de archivos media para Railway
     MEDIA_URL = '/media/'

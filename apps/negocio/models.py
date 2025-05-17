@@ -2,11 +2,11 @@ from django.db import models
 import uuid
 from apps.usuario.models import Usuario
 from apps.ciudad.models import Ciudad
-from django.core.files.storage import FileSystemStorage
+from storages.backends.minio import MinioStorage
 from apps.core.utils import get_upload_path
 
 # Configuración del almacenamiento de archivos
-fs = FileSystemStorage(location='media/')
+minio_storage = MinioStorage()
 
 # Create your models here.
 
@@ -22,8 +22,8 @@ class Negocio(models.Model):
     telefono = models.CharField(max_length=20, blank=True, null=True)
     email = models.EmailField(max_length=100, blank=True, null=True)
     sitio_web = models.URLField(max_length=255, blank=True, null=True)
-    logo = models.FileField(storage=fs, upload_to=get_upload_path, blank=True, null=True)
-    fotos = models.FileField(storage=fs, upload_to=get_upload_path, blank=True, null=True)
+    logo = models.FileField(storage=minio_storage, upload_to=get_upload_path, blank=True, null=True)
+    fotos = models.FileField(storage=minio_storage, upload_to=get_upload_path, blank=True, null=True)
     calificacion_promedio = models.FloatField(default=0)
     verificado = models.BooleanField(default=False)
     fecha_registro = models.DateTimeField(auto_now_add=True)

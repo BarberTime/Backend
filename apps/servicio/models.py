@@ -2,11 +2,11 @@ from django.db import models
 import uuid
 from apps.negocio.models import Negocio
 from apps.categoria.models import Categoria
-from django.core.files.storage import FileSystemStorage
+from storages.backends.minio import MinioStorage
 from apps.core.utils import get_upload_path
 
 # Configuración del almacenamiento de archivos
-fs = FileSystemStorage(location='media/')
+minio_storage = MinioStorage()
 
 # Create your models here.
 
@@ -31,7 +31,7 @@ class Servicio(models.Model):
 class ImagenServicio(models.Model):
     id_imagen = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, related_name='imagenes')
-    imagen = models.FileField(storage=fs, upload_to=get_upload_path)
+    imagen = models.FileField(storage=minio_storage, upload_to=get_upload_path)
     descripcion = models.CharField(max_length=255, blank=True, null=True)
     es_principal = models.BooleanField(default=False)
     orden = models.IntegerField()

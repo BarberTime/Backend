@@ -8,4 +8,5 @@ pillow
 cloudinary
 django-storages
 django-cors-headers
-
+minio
+        
