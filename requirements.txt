@@ -7,4 +7,5 @@ whitenoise
 pillow
 cloudinary
 django-storages
+django-cors-headers
 

@@ -27,10 +27,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['web-production-94b30.up.railway.app']
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Tu frontend local
+    "https://web-production-94b30.up.railway.app/",  # Agrega este si usas Railway con dominio propio
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +64,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
