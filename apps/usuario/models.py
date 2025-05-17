@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from apps.rol.models import Rol
-from storages.backends.minio import MinioStorage
+from apps.core.storage import MinioStorage
 from apps.core.utils import get_upload_path
 
 # Configuración del almacenamiento de archivos

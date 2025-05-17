@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 from apps.usuario.models import Usuario
 from apps.ciudad.models import Ciudad
-from storages.backends.minio import MinioStorage
+from apps.core.storage import MinioStorage
 from apps.core.utils import get_upload_path
 
 # Configuración del almacenamiento de archivos
