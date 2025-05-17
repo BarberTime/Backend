@@ -6,7 +6,8 @@ uvicorn
 whitenoise
 pillow
 cloudinary
-django-storages
+django-cloudinary-storage
 django-cors-headers
-minio
+django-filer
+easy-thumbnails
         
