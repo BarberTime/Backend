@@ -2,7 +2,6 @@ from django.db import models
 import uuid
 from apps.rol.models import Rol
 from cloudinary.models import CloudinaryField
-from apps.core.utils import get_upload_path
 
 # Create your models here.
 

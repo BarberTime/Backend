@@ -3,10 +3,6 @@ import uuid
 from apps.negocio.models import Negocio
 from apps.categoria.models import Categoria
 from cloudinary.models import CloudinaryField
-from apps.core.utils import get_upload_path
-
-# Configuración del almacenamiento de archivos
-# minio_storage = MinioStorage()
 
 # Create your models here.
 

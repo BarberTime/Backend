@@ -3,7 +3,6 @@ import uuid
 from apps.usuario.models import Usuario
 from apps.ciudad.models import Ciudad
 from cloudinary.models import CloudinaryField
-from apps.core.utils import get_upload_path
 
 # Create your models here.
 
