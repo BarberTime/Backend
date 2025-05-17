@@ -19,7 +19,8 @@ class NegocioSerializer(serializers.ModelSerializer):
             'fotos': {'required': False},
             'ciudad': {'required': True},
             'nombre': {'required': True},
-            'direccion': {'required': True}
+            'direccion': {'required': True},
+            'propietario': {'required': True}
         }
 
     def create(self, validated_data):
