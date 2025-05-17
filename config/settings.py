@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'apps.imagenes_negocio',
     'apps.empleados',
     'apps.ciudad',
-    'apps.core',
     'apps.authLogin',
 ]
 
