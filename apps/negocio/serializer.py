@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Negocio
 from apps.usuario.serializers import UsuarioSerializer
 from apps.ciudad.serializers import CiudadSerializer
+from apps.ciudad.models import Ciudad
 
 class NegocioSerializer(serializers.ModelSerializer):
     propietario = UsuarioSerializer(read_only=True)
