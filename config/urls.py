@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/v1/', include('apps.pago.urls')),
     path('api/v1/', include('apps.ciudad.urls')),
     path('api/v1/', include('apps.cliente.urls')),
+    path('api/v1/', include('apps.authLogin.urls')),
 ]
 
 if settings.DEBUG:
